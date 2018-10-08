@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { Navbar, NavbarBrand, NavbarNav, NavbarToggler, Collapse, NavItem, NavLink } from 'mdbreact';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import Home from "./Home";
+import Inkonik from "./Inkonik";
+import Pieta from "./Pieta";
 import './index.css';
 
 
@@ -22,22 +26,29 @@ class App extends Component {
     render() {
         return (
             <Router>
+            	<div>
                 <Navbar color="indigo" dark expand="md" scrolling>
-                    <NavbarBrand href="/">
+                    <NavLink exact to="/"><NavbarBrand>
                         <strong>Estudios BH</strong>
-                    </NavbarBrand>
+                    </NavbarBrand></NavLink>
                     { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
                     <Collapse isOpen = { this.state.collapse } navbar>
                         <NavbarNav left>
                           <NavItem>
-                              <NavLink to="#">Inkonik</NavLink>
+                              <NavLink to="/Inkonik">Inkonik</NavLink>
                           </NavItem>
                           <NavItem>
-                              <NavLink to="#">Pieta</NavLink>
+                              <NavLink to="/Pieta">Pieta</NavLink>
                           </NavItem>
                         </NavbarNav>
                     </Collapse>
                 </Navbar>
+                <main style={{marginTop: '4rem'}}>
+                	<Route exact path="/" component={Home}/>
+                	<Route path="/Inkonik" component={Inkonik}/>
+                	<Route path="/Pieta" component={Pieta}/>
+          		</main>
+          		</div>
             </Router>
         );
     }
