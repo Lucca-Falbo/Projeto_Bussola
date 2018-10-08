@@ -5,6 +5,7 @@ import { Route } from 'react-router-dom';
 import Home from "./Home";
 import Inkonik from "./Inkonik";
 import Pieta from "./Pieta";
+import Tatuadores from "./Tatuadores"
 import './index.css';
 
 
@@ -28,9 +29,9 @@ class App extends Component {
             <Router>
             	<div>
                 <Navbar color="indigo" dark expand="md" scrolling>
-                    <NavLink exact to="/"><NavbarBrand>
-                        <strong>Estudios BH</strong>
-                    </NavbarBrand></NavLink>
+                    <NavbarBrand>
+                        <NavLink exact to="/"><strong>Estudios BH</strong></NavLink>
+                    </NavbarBrand>
                     { !this.state.isWideEnough && <NavbarToggler onClick = { this.onClick } />}
                     <Collapse isOpen = { this.state.collapse } navbar>
                         <NavbarNav left>
@@ -47,6 +48,7 @@ class App extends Component {
                 	<Route exact path="/" component={Home}/>
                 	<Route path="/Inkonik" component={Inkonik}/>
                 	<Route path="/Pieta" component={Pieta}/>
+                	<Tatuadores />
           		</main>
           		</div>
             </Router>
